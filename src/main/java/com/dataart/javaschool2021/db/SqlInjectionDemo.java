@@ -1,13 +1,18 @@
-package org.example;
+package com.dataart.javaschool2021.db;
+
+import com.dataart.javaschool2021.db.auth.AuthProcessor;
+import com.dataart.javaschool2021.db.auth.HibernateAuthProcessor;
+import com.dataart.javaschool2021.db.auth.PreparedStatementAuthProcessor;
+import com.dataart.javaschool2021.db.auth.StatementAuthProcessor;
 
 import java.util.Scanner;
 
 public class SqlInjectionDemo {
     public static void main(String[] args) throws Exception {
         AuthProcessor authProcessor =
-//        new ZeroAuthProcessor();
-                new BrokenAuthProcessor();
-//        new GoodAuthProcessor();
+//                new StatementAuthProcessor();
+//        new PreparedStatementAuthProcessor();
+new HibernateAuthProcessor();
 
         String loggedUser;
 
