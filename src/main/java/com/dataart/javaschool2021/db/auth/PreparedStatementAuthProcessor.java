@@ -1,17 +1,21 @@
 package com.dataart.javaschool2021.db.auth;
 
 import com.dataart.javaschool2021.db.conn.DbConnectionProvider;
-import com.dataart.javaschool2021.db.conn.DbConnector;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 public class PreparedStatementAuthProcessor implements AuthProcessor {
+    private final DbConnectionProvider dbConnectionProvider;
+
+    public PreparedStatementAuthProcessor(DbConnectionProvider dbConnectionProvider) {
+        this.dbConnectionProvider = dbConnectionProvider;
+    }
 
     @Override
     public String performLogin(String userName, String password) throws Exception {
-        Connection connection = DbConnector.getDbConnection();
+        Connection connection = dbConnectionProvider.getDbConnection();
 
         String sql = "select username from users " +
                 "where username=? " +

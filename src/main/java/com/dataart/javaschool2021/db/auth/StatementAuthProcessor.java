@@ -1,16 +1,21 @@
 package com.dataart.javaschool2021.db.auth;
 
-import com.dataart.javaschool2021.db.conn.DbConnector;
+import com.dataart.javaschool2021.db.conn.DbConnectionProvider;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
 public class StatementAuthProcessor implements AuthProcessor {
+    private final DbConnectionProvider dbConnectionProvider;
+
+    public StatementAuthProcessor(DbConnectionProvider dbConnectionProvider) {
+        this.dbConnectionProvider = dbConnectionProvider;
+    }
 
     @Override
     public String performLogin(String userName, String password) throws Exception {
-        Connection connection = DbConnector.getDbConnection();
+        Connection connection = dbConnectionProvider.getDbConnection();
 
         Statement statement = connection.createStatement();
 

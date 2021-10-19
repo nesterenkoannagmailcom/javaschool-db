@@ -6,6 +6,12 @@ import com.zaxxer.hikari.HikariDataSource;
 import java.sql.Connection;
 import java.sql.SQLException;
 
+/**
+ * Пул коннектов к БД.
+ * Обычно приложения не создают коннекты бесконтрольно, а используют ограниченный пул
+ * и обычно приложения не тратят время на открытие коннекта каждый раз, а переиспользуют их -
+ * подключение к БД - дорогая операция
+ */
 public class PooledDbConnectionProvider implements DbConnectionProvider {
     HikariConfig config = new HikariConfig();
     HikariDataSource ds;

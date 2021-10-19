@@ -4,15 +4,16 @@ import com.dataart.javaschool2021.db.auth.AuthProcessor;
 import com.dataart.javaschool2021.db.auth.HibernateAuthProcessor;
 import com.dataart.javaschool2021.db.auth.PreparedStatementAuthProcessor;
 import com.dataart.javaschool2021.db.auth.StatementAuthProcessor;
+import com.dataart.javaschool2021.db.conn.SimpleDbConnectionProvider;
 
 import java.util.Scanner;
 
 public class SqlInjectionDemo {
     public static void main(String[] args) throws Exception {
         AuthProcessor authProcessor =
-//                new StatementAuthProcessor();
-//        new PreparedStatementAuthProcessor();
-new HibernateAuthProcessor();
+                new StatementAuthProcessor(new SimpleDbConnectionProvider());
+//         new PreparedStatementAuthProcessor(new SimpleDbConnectionProvider());
+//         new HibernateAuthProcessor();
 
         String loggedUser;
 
