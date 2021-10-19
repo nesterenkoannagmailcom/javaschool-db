@@ -11,8 +11,8 @@ import java.util.Scanner;
 public class SqlInjectionDemo {
     public static void main(String[] args) throws Exception {
         AuthProcessor authProcessor =
-                new StatementAuthProcessor(new SimpleDbConnectionProvider());
-//         new PreparedStatementAuthProcessor(new SimpleDbConnectionProvider());
+                new StatementAuthProcessor();
+//         new PreparedStatementAuthProcessor();
 //         new HibernateAuthProcessor();
 
         String loggedUser;

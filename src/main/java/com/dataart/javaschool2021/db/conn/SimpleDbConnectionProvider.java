@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
 
-public class SimpleDbConnectionProvider implements DbConnectionProvider {
+public class SimpleDbConnectionProvider {
     public Connection getDbConnection() throws SQLException {
         Properties props = new Properties();
         props.setProperty("user", "postgres");

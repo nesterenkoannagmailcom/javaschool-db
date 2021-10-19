@@ -1,6 +1,6 @@
 create table users (
-                       username varchar(45) primary key,
-                       password varchar(255) not null
+   username varchar(45) primary key,
+   password varchar(255) not null
 );
 
 insert into users (username, password) values ('admin', 'secret');
