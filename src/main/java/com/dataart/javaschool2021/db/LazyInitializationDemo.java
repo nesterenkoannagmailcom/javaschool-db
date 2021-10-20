@@ -20,8 +20,10 @@ public class LazyInitializationDemo {
 
         List<AuthLog> resultList = query.getResultList();
 
-        resultList.forEach(System.out::println);
 
         em.close();
+
+        // TODO перенести ДО em.close(), чтобы не было исключения
+        resultList.forEach(System.out::println);
     }
 }

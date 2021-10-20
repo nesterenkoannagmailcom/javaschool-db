@@ -11,22 +11,23 @@ public class PreparedStatementAuthProcessor implements AuthProcessor {
 
     @Override
     public String performLogin(String userName, String password) throws Exception {
-        Connection connection = dbConnectionProvider.getDbConnection();
+        try (Connection connection = dbConnectionProvider.getDbConnection()) {
 
-        String sql = "select username from users " +
-                "where username=? " +
-                "  and password=?";
+            String sql = "select username from users " +
+                    "where username=? " +
+                    "  and password=?";
 
-        PreparedStatement statement = connection.prepareStatement(sql);
-        statement.setString(1, userName);
-        statement.setString(2, password);
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setString(1, userName);
+            statement.setString(2, password);
 
-        ResultSet resultSet = statement.executeQuery();
+            ResultSet resultSet = statement.executeQuery();
 
-        if (resultSet.next()) {
-            return resultSet.getString(1);
-        } else {
-            return null;
+            if (resultSet.next()) {
+                return resultSet.getString(1);
+            } else {
+                return null;
+            }
         }
     }
 }
