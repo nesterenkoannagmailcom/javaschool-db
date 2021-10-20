@@ -1,5 +1,6 @@
 package com.dataart.javaschool2021.db.auth;
 
+import com.dataart.javaschool2021.db.conn.PooledDbConnectionProvider;
 import com.dataart.javaschool2021.db.conn.SimpleDbConnectionProvider;
 
 import java.sql.Connection;
@@ -7,7 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 public class PreparedStatementAuthProcessor implements AuthProcessor {
-    private final SimpleDbConnectionProvider dbConnectionProvider = new SimpleDbConnectionProvider();
+    private final PooledDbConnectionProvider dbConnectionProvider = new PooledDbConnectionProvider();
 
     @Override
     public String performLogin(String userName, String password) throws Exception {
